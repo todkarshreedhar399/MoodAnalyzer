@@ -1,34 +1,29 @@
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
 public class MoodAnalyserTest
 {
-    MoodAnalyser moodAnalyser = null;
-
-    @Before
-    public void objectCreation()
-    {
-        moodAnalyser = new MoodAnalyser();
-    }
-
-    /*Method to return sad mood*/
     @Test
     public void iAmIn_SadMood_ShouldReturn_sad()
     {
-        String mood = moodAnalyser.analyseMood("I am in sad mood");
+        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in sad mood");
+        String mood = moodAnalyser.analyseMood();
         Assert.assertEquals("sad" , mood);
-        System.out.println(mood);
     }
 
-    /*Method to return Happy mood*/
     @Test
-    public void iAmIn_AnyMood_ShouldReturn_Happy()
+    public void iAmIn_anyMood_ShouldReturn_happy()
     {
-        String mood = moodAnalyser.analyseMood("I am in any mood");
+        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in any mood");
+        String mood = moodAnalyser.analyseMood();
         Assert.assertEquals("Happy" , mood);
-        System.out.println(mood);
     }
 
-
+    @Test
+    public void null_Should_Return_Happy_Mood()
+    {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        String mood = moodAnalyser.analyseMood();
+        Assert.assertEquals("Happy" , mood);
+    }
 }
